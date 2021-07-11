@@ -1,0 +1,10 @@
+dotnet ef dbcontext scaffold "server=localhost; port=3306; database=Project; user=myuser; password=mydotnetpass; Persist Security Info=False; Connect Timeout=300" MySql.Data.EntityFrameworkCore -o EF/Models -t TodoItem  -f
+
+
+
+//https://www.tektutorialshub.com/entity-framework-core/ef-core-migrations/
+https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.aspx
+
+
+dotnet ef migrations add "initial" --context TodoContext
+dotnet ef database update --context TodoContext
