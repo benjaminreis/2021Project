@@ -23,6 +23,7 @@ namespace TodoApi
     {
       Configuration = configuration;
     }
+    readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
     public IConfiguration Configuration { get; }
 
@@ -31,7 +32,17 @@ namespace TodoApi
     {
       string mySqlConnectionStr = Configuration.GetConnectionString("DefaultConnection");
       services.AddDbContext<TodoContext>(options => options.UseMySQL(mySqlConnectionStr));
-
+        services.AddCors(options =>
+        {
+            options.AddPolicy(name: "_myAllowSpecificOrigins",
+                              builder =>
+                              {
+                                  builder.WithOrigins("http://localhost:3000", 
+                                  "http://localhost:5000/")
+                                  .AllowAnyHeader()
+                                  .AllowAnyMethod();;
+                              });
+        });
       services.AddControllers();
     }
 
@@ -46,6 +57,7 @@ namespace TodoApi
       app.UseHttpsRedirection();
 
       app.UseRouting();
+      app.UseCors("_myAllowSpecificOrigins");
 
       app.UseAuthorization();
 
