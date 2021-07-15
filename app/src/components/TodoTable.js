@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
+import paginationFactory from "react-bootstrap-table2-paginator";
+
 // import Toast from "react-bootstrap/Toast";
 // import Button from "react-bootstrap/Button";
 import { fetchTodos } from "../services/TodoServices";
-
 
 //[{id: 1, name: "test ben", isComplete: false},
 const columns = [
@@ -36,7 +37,18 @@ const TodoTable = ({ children }) => {
   }, []);
 
   return (
-    <>{items != null && <BootstrapTable keyField={'id'} columns={columns} data={items} />}</>
+    <>
+      {items != null && (
+        <BootstrapTable
+          keyField={"id"}
+          columns={columns}
+          // bordered={false}
+          data={items}
+          bootstrap4={true}
+          pagination={paginationFactory()}
+        />
+      )}
+    </>
   );
 };
 
