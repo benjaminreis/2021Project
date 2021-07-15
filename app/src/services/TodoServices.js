@@ -15,7 +15,8 @@ const fetchTodos = async () => {
 
 const addTodo = async (model) => {
   try {
-    const response = await Axios.post(rootURL);
+    console.log(model);
+    const response = await Axios.post(rootURL, model);
     return response.data;
   } catch (error) {
     console.error(error);

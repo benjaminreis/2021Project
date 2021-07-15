@@ -30,6 +30,7 @@ const TodoTable = ({ children }) => {
     const todoData = await fetchTodos();
     console.log(todoData);
     setItems(todoData);
+    console.log(todoData);
   };
 
   useEffect(() => {
