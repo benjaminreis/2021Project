@@ -1,13 +1,7 @@
 import React, { useState, useEffect } from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import paginationFactory from "react-bootstrap-table2-paginator";
-import { Container } from "react-bootstrap";
-
-// import Toast from "react-bootstrap/Toast";
-// import Button from "react-bootstrap/Button";
 import { fetchTodos, editTodo } from "../services/TodoServices";
-
-//[{id: 1, name: "test ben", isComplete: false},
 
 const TodoTable = ({ children }) => {
   const [items, setItems] = useState();
@@ -68,7 +62,6 @@ const TodoTable = ({ children }) => {
   };
 
   const renderTable = () => {
-    console.log("renderTable called");
     if (items != null) {
       return (
         <>
@@ -89,9 +82,7 @@ const TodoTable = ({ children }) => {
 
   return (
     <>
-      {/* // <Container> */}
       {renderTable()}
-      {/* </Container> */}
     </>
   );
 };
