@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
-import { InputGroup, FormControl } from "react-bootstrap";
+import { InputGroup, FormControl, Button } from "react-bootstrap";
 
 import { addTodo } from "../services/TodoServices";
 
@@ -17,7 +17,7 @@ const AddTodoModal = ({ children, toggleShowAddModal }) => {
 
   return (
     <>
-      <Modal.Header>Hi</Modal.Header>
+      <Modal.Header>Add a new Todo</Modal.Header>
       <Modal.Body>
         <InputGroup className="mb-3">
           <InputGroup.Text id="inputGroup-sizing-default">
@@ -34,8 +34,12 @@ const AddTodoModal = ({ children, toggleShowAddModal }) => {
         </InputGroup>
       </Modal.Body>
       <Modal.Footer>
-        <button onClick={toggleShowAddModal}>Cancel</button>
-        <button onClick={addItem}>Save</button>
+        <Button class="btn btn-primary" onClick={toggleShowAddModal}>
+          Cancel
+        </Button>
+        <Button class="btn btn-success" onClick={addItem}>
+          Save
+        </Button>
       </Modal.Footer>
     </>
   );

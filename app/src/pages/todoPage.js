@@ -5,6 +5,7 @@ import { fetchTodos } from "../services/TodoServices";
 import TodoTable from "../components/TodoTable";
 import Modal from "react-bootstrap/Modal";
 import AddTodoModal from "../components/AddTodoModal";
+import { Container, Row } from "react-bootstrap";
 
 const TodoPage = ({ children }) => {
   // const [show, toggleShow] = useState(false);
@@ -22,8 +23,10 @@ const TodoPage = ({ children }) => {
   };
 
   return (
-    <>
-      <Button onClick={toggleShowAddModal}> Add ToDo</Button>
+    <Container>
+      <Row className="mb-3">
+        <Button onClick={toggleShowAddModal}> Add ToDo</Button>
+      </Row>
       {/* {!show && <Button onClick={() => toggleShow(true)}>Show Toast</Button>}
       <Toast show={show} onClose={() => toggleShow(false)}>
         <Toast.Header>
@@ -31,12 +34,14 @@ const TodoPage = ({ children }) => {
         </Toast.Header>
         <Toast.Body>test test </Toast.Body>
       </Toast> */}
-      <TodoTable />
+      <Row>
+        <TodoTable />
+      </Row>
 
       <Modal show={showAddModal}>
         <AddTodoModal toggleShowAddModal={toggleShowAddModal} />
       </Modal>
-    </>
+    </Container>
   );
 };
 
