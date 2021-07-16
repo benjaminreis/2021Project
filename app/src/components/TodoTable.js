@@ -5,7 +5,7 @@ import { Container } from "react-bootstrap";
 
 // import Toast from "react-bootstrap/Toast";
 // import Button from "react-bootstrap/Button";
-import { fetchTodos } from "../services/TodoServices";
+import { fetchTodos, editTodo } from "../services/TodoServices";
 
 //[{id: 1, name: "test ben", isComplete: false},
 
@@ -22,6 +22,10 @@ const TodoTable = ({ children }) => {
   useEffect(() => {
     loadData();
   }, []);
+
+  useEffect(() => {
+    console.log(items);
+  }, [items]);
 
   const columns = [
     {
@@ -41,7 +45,11 @@ const TodoTable = ({ children }) => {
         return (
           <div className="checkbox disabled">
             <label>
-              <input type="checkbox" checked={row.isComplete} disabled />
+              <input
+                type="checkbox"
+                checked={row.isComplete}
+                onChange={() => handleTodoToggle(row.id)}
+              />
             </label>
           </div>
         );
@@ -49,19 +57,40 @@ const TodoTable = ({ children }) => {
     },
   ];
 
+  const handleTodoToggle = (id) => {
+    let item = items.find((x) => x.id === id);
+    item.isComplete = !item.isComplete;
+    editTodo(id, item).then((x) => {
+      if (!x) {
+        setItems([...items]);
+      }
+    });
+  };
+
+  const renderTable = () => {
+    console.log("renderTable called");
+    if (items != null) {
+      return (
+        <>
+          <BootstrapTable
+            keyField={"id"}
+            columns={columns}
+            // bordered={false}
+            data={items}
+            bootstrap4={true}
+            pagination={paginationFactory()}
+          />
+        </>
+      );
+    } else {
+      return null;
+    }
+  };
+
   return (
     <>
       {/* // <Container> */}
-      {items != null && (
-        <BootstrapTable
-          keyField={"id"}
-          columns={columns}
-          // bordered={false}
-          data={items}
-          bootstrap4={true}
-          pagination={paginationFactory()}
-        />
-      )}
+      {renderTable()}
       {/* </Container> */}
     </>
   );

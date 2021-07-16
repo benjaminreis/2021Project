@@ -11,7 +11,6 @@ const fetchTodos = async () => {
     console.error(error);
   }
 };
-// export default fetchTodos;
 
 const addTodo = async (model) => {
   try {
@@ -22,5 +21,15 @@ const addTodo = async (model) => {
     console.error(error);
   }
 };
-// export default addTodo;
-export { fetchTodos, addTodo };
+
+const editTodo = async (id, model) => {
+  try {
+    const response = await Axios.put(`${rootURL}${id}`, model);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    return "error";
+  }
+};
+
+export { fetchTodos, addTodo, editTodo };
