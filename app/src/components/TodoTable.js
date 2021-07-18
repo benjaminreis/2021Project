@@ -120,7 +120,7 @@ const TodoTable = ({ children, tableFilter }) => {
 };
 
 TodoTable.defaultProps = {
-  tableFilter: "completed",
+  tableFilter: "all",
 };
 
 export default TodoTable;

@@ -10,14 +10,14 @@ import { Col, Container, Row, DropdownButton, Dropdown } from "react-bootstrap";
 const TodoPage = ({ children }) => {
   // const [show, toggleShow] = useState(false);
   const [showAddModal, setAddModal] = useState(false);
+  const [todoFilterLabel, setTodoFilterLabel] = useState("Filter Todos");
+  const [todoFilterVal, setTodoFilterVal] = useState("all");
 
   useEffect(() => {
     fetchTodos();
   }, []);
 
   const toggleShowAddModal = () => {
-    console.log("modal toggled");
-    console.log(showAddModal);
     let newVal = !showAddModal;
     setAddModal(newVal);
   };
@@ -26,25 +26,25 @@ const TodoPage = ({ children }) => {
     <Container>
       <Row className="mb-3">
         <div className="ml-2">
-          <DropdownButton id="dropdown-basic-button" title="Filter Todos">
-            <Dropdown.Item>All</Dropdown.Item>
-            <Dropdown.Item>Completed</Dropdown.Item>
-            <Dropdown.Item>Incomple</Dropdown.Item>
+          <DropdownButton
+            id="dropdown-basic-button"
+            title={todoFilterLabel}
+            onSelect={(val) => {
+              setTodoFilterLabel(`${val[0].toUpperCase()}${val.slice(1)}`);
+              setTodoFilterVal(val);
+            }}
+          >
+            <Dropdown.Item eventKey="all">All</Dropdown.Item>
+            <Dropdown.Item eventKey="completed">Completed</Dropdown.Item>
+            <Dropdown.Item eventKey="incomplete">Incomplete</Dropdown.Item>
           </DropdownButton>
         </div>
         <div className="ml-3">
           <Button onClick={toggleShowAddModal}> Add ToDo</Button>
         </div>
       </Row>
-      {/* {!show && <Button onClick={() => toggleShow(true)}>Show Toast</Button>}
-      <Toast show={show} onClose={() => toggleShow(false)}>
-        <Toast.Header>
-          <strong className="mr-auto">React-Bootstrap</strong>
-        </Toast.Header>
-        <Toast.Body>test test </Toast.Body>
-      </Toast> */}
       <Row>
-        <TodoTable />
+        <TodoTable tableFilter={todoFilterVal} />
       </Row>
 
       <Modal show={showAddModal}>
