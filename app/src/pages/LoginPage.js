@@ -2,13 +2,33 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { Container, Col, Row, InputGroup, FormControl } from "react-bootstrap";
 import { authenticateUser } from "../services/UsersService";
+import { Redirect, useLocation, useHistory } from "react-router-dom";
 
-const LoginPage = ({ children }) => {
-  // const [show, toggleShow] = useState(false);
+const LoginPage = ({ children, setUser }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
+  const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+
+  const { state } = useLocation();
+  let history = useHistory();
 
   useEffect(() => {}, []);
+
+  const login = async () => {
+    let user = {};
+    user.Username = username;
+    user.Password = password;
+    let userResult = await authenticateUser(user);
+    if (userResult?.token) {
+      setRedirectToReferrer(true);
+      setUser(userResult);
+    }
+  };
+  useEffect(() => {
+    if (redirectToReferrer === true) {
+      history.replace(state?.from.pathname || "/");
+    }
+  }, [redirectToReferrer]);
 
   return (
     <Container>
@@ -48,10 +68,7 @@ const LoginPage = ({ children }) => {
             <Button
               class="btn btn-success"
               onClick={() => {
-                let user = {};
-                user.Username = username;
-                user.Password = password;
-                authenticateUser(user);
+                login();
               }}
             >
               login

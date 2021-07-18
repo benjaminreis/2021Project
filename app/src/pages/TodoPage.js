@@ -5,7 +5,7 @@ import { fetchTodos } from "../services/TodoServices";
 import TodoTable from "../components/TodoTable";
 import Modal from "react-bootstrap/Modal";
 import AddTodoModal from "../components/AddTodoModal";
-import { Container, Row } from "react-bootstrap";
+import { Col, Container, Row, DropdownButton, Dropdown } from "react-bootstrap";
 
 const TodoPage = ({ children }) => {
   // const [show, toggleShow] = useState(false);
@@ -25,7 +25,16 @@ const TodoPage = ({ children }) => {
   return (
     <Container>
       <Row className="mb-3">
-        <Button onClick={toggleShowAddModal}> Add ToDo</Button>
+        <div className="ml-2">
+          <DropdownButton id="dropdown-basic-button" title="Filter Todos">
+            <Dropdown.Item>All</Dropdown.Item>
+            <Dropdown.Item>Completed</Dropdown.Item>
+            <Dropdown.Item>Incomple</Dropdown.Item>
+          </DropdownButton>
+        </div>
+        <div className="ml-3">
+          <Button onClick={toggleShowAddModal}> Add ToDo</Button>
+        </div>
       </Row>
       {/* {!show && <Button onClick={() => toggleShow(true)}>Show Toast</Button>}
       <Toast show={show} onClose={() => toggleShow(false)}>
