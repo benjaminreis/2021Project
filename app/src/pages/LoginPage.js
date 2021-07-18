@@ -14,7 +14,7 @@ const LoginPage = ({ children }) => {
     <Container>
       <Col md={{ span: 3, offset: 3 }}>
         <Row>
-          345= <h4>login:asdf</h4>
+          <h5 className="ml-2">login:</h5>
         </Row>
         <Row>
           <InputGroup className="mb-3">
