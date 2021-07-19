@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 // using MySQL.EntityFrameworkCore.Extensions;
 // using MySQL.Data.EntityFrameworkCore;
 using TodoApi.Models;
+using Models;
 
 namespace TodoApi.Contexts
 {
@@ -16,6 +17,7 @@ namespace TodoApi.Contexts
     }
 
     public virtual DbSet<TodoItem> TodoItems { get; set; }
+    public virtual DbSet<User> Users { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

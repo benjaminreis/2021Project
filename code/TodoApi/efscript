@@ -8,3 +8,5 @@ https://www.entityframeworktutorial.net/efcore/entity-framework-core-migration.a
 
 dotnet ef migrations add "initial" --context TodoContext
 dotnet ef database update --context TodoContext
+
+dotnet ef migrations add "users table" --context TodoContext
