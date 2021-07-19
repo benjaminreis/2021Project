@@ -28,6 +28,17 @@ namespace Controllers
       return Ok(response);
     }
 
+    [HttpPost("createUser")]
+    public IActionResult Add(User model)
+    {
+      var response = _usersManager.Add(model);
+
+      if (response.Errors?.Count > 0)
+        return BadRequest(new { message = response.Errors });
+
+      return Ok(response);
+    }
+
     [Authorize]
     [HttpGet]
     public IActionResult GetAll()

@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "ypgYMdgSc2E1LT+eRFabAc+V2mhdlt7B2wkWhdaJ7045KhePiyOldWq4ieRvPgBliJoylI03RLPX8O9rHSB4Gg==",
+  "dgSpecHash": "nV1xgLgwY5F5OgGlDzUNtgJLn/l++wFaPKtW5ACnfqGQHoI01KxwRa8nj/l5XdAr5khhf5XhUFvrdEvkVMK65A==",
   "success": true,
   "projectFilePath": "/Users/benjaminreis/Documents/development/2021Project/code/TodoApi/TodoApi.csproj",
   "expectedPackageFiles": [
+    "/Users/benjaminreis/.nuget/packages/bcrypt.net-next/4.0.2/bcrypt.net-next.4.0.2.nupkg.sha512",
     "/Users/benjaminreis/.nuget/packages/bouncycastle.netcore/1.8.3/bouncycastle.netcore.1.8.3.nupkg.sha512",
     "/Users/benjaminreis/.nuget/packages/google.protobuf/3.11.4/google.protobuf.3.11.4.nupkg.sha512",
     "/Users/benjaminreis/.nuget/packages/k4os.compression.lz4/1.1.11/k4os.compression.lz4.1.1.11.nupkg.sha512",
@@ -53,7 +54,7 @@
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.collections/4.0.11/system.collections.4.0.11.nupkg.sha512",
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.collections.concurrent/4.0.12/system.collections.concurrent.4.0.12.nupkg.sha512",
     "/Users/benjaminreis/.nuget/packages/system.collections.immutable/1.7.1/system.collections.immutable.1.7.1.nupkg.sha512",
-    "/Users/benjaminreis/.nuget/packages/system.componentmodel.annotations/4.7.0/system.componentmodel.annotations.4.7.0.nupkg.sha512",
+    "/Users/benjaminreis/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
     "/Users/benjaminreis/.nuget/packages/system.configuration.configurationmanager/4.4.1/system.configuration.configurationmanager.4.4.1.nupkg.sha512",
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.console/4.0.0/system.console.4.0.0.nupkg.sha512",
     "/usr/local/share/dotnet/sdk/NuGetFallbackFolder/system.diagnostics.debug/4.0.11/system.diagnostics.debug.4.0.11.nupkg.sha512",
