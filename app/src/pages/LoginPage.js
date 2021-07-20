@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { Container, Col, Row, InputGroup, FormControl } from "react-bootstrap";
 import { authenticateUser } from "../services/UsersService";
-import { Redirect, useLocation, useHistory } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
+import CreateUserModal from "../components/CreateUserModal";
+import Modal from "react-bootstrap/Modal";
 
 const LoginPage = ({ children, setUser }) => {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
+  const [showCreateUserModal, setCreateUserModal] = useState(false);
 
   const { state } = useLocation();
   let history = useHistory();
@@ -29,6 +32,11 @@ const LoginPage = ({ children, setUser }) => {
       history.replace(state?.from.pathname || "/");
     }
   }, [redirectToReferrer]);
+
+  const toggleShowCreateUserModal = () => {
+    let newVal = !showCreateUserModal;
+    setCreateUserModal(newVal);
+  };
 
   return (
     <Container>
@@ -73,9 +81,26 @@ const LoginPage = ({ children, setUser }) => {
             >
               login
             </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={{ span: 5, offset: 7 }}>
+            <Button
+              class="btn btn-success"
+              onClick={() => {
+                toggleShowCreateUserModal();
+              }}
+            >
+              create new user
+            </Button>
           </Col>{" "}
         </Row>
       </Col>
+      <Modal show={showCreateUserModal}>
+        <CreateUserModal
+          toggleShowCreateUserModal={toggleShowCreateUserModal}
+        />
+      </Modal>
     </Container>
   );
 };

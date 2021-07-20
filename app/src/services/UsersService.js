@@ -6,13 +6,19 @@ const rootURL = "https://localhost:5001/Users/";
 
 const authenticateUser = async (model) => {
   try {
-    console.log(model);
     const response = await Axios.post(`${rootURL}authenticate`, model);
-    console.log(response);
     return response.data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export { authenticateUser };
+const createNewUser = async (model) => {
+  try {
+    const response = await Axios.post(`${rootURL}createUser`, model);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+export { authenticateUser, createNewUser };
