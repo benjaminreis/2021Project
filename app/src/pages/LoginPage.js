@@ -72,7 +72,17 @@ const LoginPage = ({ children, setUser }) => {
           </InputGroup>
         </Row>
         <Row>
-          <Col md={{ span: 3, offset: 9 }}>
+          <Col md={{ span: 8, offset: 0}}>
+            <Button
+              class="btn btn-success"
+              onClick={() => {
+                toggleShowCreateUserModal();
+              }}
+            >
+              create new user
+            </Button>
+          </Col>
+          <Col md={{ span: 3, offset: 1 }}>
             <Button
               class="btn btn-success"
               onClick={() => {
@@ -83,18 +93,7 @@ const LoginPage = ({ children, setUser }) => {
             </Button>
           </Col>
         </Row>
-        <Row>
-          <Col md={{ span: 5, offset: 7 }}>
-            <Button
-              class="btn btn-success"
-              onClick={() => {
-                toggleShowCreateUserModal();
-              }}
-            >
-              create new user
-            </Button>
-          </Col>{" "}
-        </Row>
+        <Row></Row>
       </Col>
       <Modal show={showCreateUserModal}>
         <CreateUserModal
