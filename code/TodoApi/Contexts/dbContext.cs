@@ -18,6 +18,8 @@ namespace TodoApi.Contexts
 
     public virtual DbSet<TodoItem> TodoItems { get; set; }
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Activity> Activities { get; set; }
+    public virtual DbSet<ActivityType> ActivityTypes { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

@@ -1,4 +1,5 @@
 dotnet ef dbcontext scaffold "server=localhost; port=3306; database=Project; user=myuser; password=mydotnetpass; Persist Security Info=False; Connect Timeout=300" MySql.Data.EntityFrameworkCore -o EF/Models -t TodoItem  -f
+dotnet ef dbcontext scaffold "server=localhost; port=3306; database=Project; user=myuser; password=mydotnetpass; Persist Security Info=False; Connect Timeout=300" MySql.Data.EntityFrameworkCore -o EF/Models -t Activity -t ActivityType  -f
 
 
 
@@ -10,3 +11,6 @@ dotnet ef migrations add "initial" --context TodoContext
 dotnet ef database update --context TodoContext
 
 dotnet ef migrations add "users table" --context TodoContext
+
+dotnet ef migrations add "Activities table" --context TodoContext
+

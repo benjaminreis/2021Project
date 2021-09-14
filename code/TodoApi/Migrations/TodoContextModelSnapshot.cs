@@ -42,6 +42,40 @@ namespace TodoApi.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("TodoApi.Models.Activity", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Activities");
+                });
+
+            modelBuilder.Entity("TodoApi.Models.ActivityType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<bool>("UsesEquipment")
+                        .HasColumnType("tinyint(1)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ActivityTypes");
+                });
+
             modelBuilder.Entity("TodoApi.Models.TodoItem", b =>
                 {
                     b.Property<long>("Id")
