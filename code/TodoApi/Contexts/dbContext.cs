@@ -3,8 +3,8 @@ using Microsoft.EntityFrameworkCore;
 // using MySql.EntityFrameworkCore;
 // using MySQL.EntityFrameworkCore.Extensions;
 // using MySQL.Data.EntityFrameworkCore;
-using TodoApi.Models;
 using Models;
+
 
 namespace TodoApi.Contexts
 {
